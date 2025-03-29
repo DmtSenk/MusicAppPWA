@@ -1,12 +1,23 @@
-import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { Component, OnInit} from '@angular/core';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonInput } from '@ionic/angular/standalone';
+import { MusicService } from '../Services/music.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent],
+  imports: [CommonModule, IonInput, IonItem, IonHeader, IonToolbar, IonTitle, IonContent],
 })
-export class HomePage {
-  constructor() {}
+export class HomePage implements OnInit{
+  constructor(private musicService:MusicService) {}
+
+  Music:any[]=[];
+
+  ngOnInit():void{
+    this.musicService.getPlayList().subscribe((data)=>{
+      this.Music = data.results;
+    });
+  }
+  
 }
