@@ -13,11 +13,19 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <ion-item>
-      <ion-input placeholder="Search for music...">
-      </ion-input>
-    </ion-item>
-  </div>
+  <ion-item>
+    <ion-searchbar placeholder="Search for music..."></ion-searchbar>
+      <ion-button slot="end" class="circle-button" color="primary">
+      </ion-button>
+  </ion-item>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="recentlyPlayed">
+        <ion-icon src="assets/icon/test.svg"></ion-icon>
+        <ion-label>Recent</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 
 </ion-content>
