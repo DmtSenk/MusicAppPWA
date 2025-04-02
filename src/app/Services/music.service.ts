@@ -10,6 +10,6 @@ export class MusicService {
   constructor(private httpMusic: HttpClient) { }
 
   getPlayList(): Observable<any>{
-    return this.httpMusic.get('https://api.jamendo.com/v3.0/tracks?client_id=c8e47783&limit=5');
+    return this.httpMusic.get('https://api.deezer.com/search?q=focus&type=track');
   }
 }

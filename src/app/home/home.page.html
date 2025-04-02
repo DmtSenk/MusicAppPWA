@@ -1,31 +1,46 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
+    <ion-title slot="start">
       Music App
     </ion-title>
+    <ion-button color="white" slot="end">
+      <ion-icon src="assets/icon/settings.svg"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <ion-item>
     <ion-searchbar placeholder="Search for music..."></ion-searchbar>
-      <ion-button slot="end" class="circle-button" color="primary">
+      <ion-button slot="end" class="circle-button" color="white">
+        <ion-icon src="assets/icon/search.svg"></ion-icon>
       </ion-button>
   </ion-item>
 
+  <ion-list>
+    <ion-label>Recently Searched:</ion-label>
+  </ion-list>
+  <ion-list>
+    <ion-label>Mood:</ion-label>
+  </ion-list>
+
   <ion-tabs>
     <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="recentlyPlayed">
-        <ion-icon src="assets/icon/test.svg"></ion-icon>
-        <ion-label>Recent</ion-label>
+      <ion-tab-button tab="home">
+        <ion-icon src="assets/icon/home.svg"></ion-icon>
+        <ion-label>Home</ion-label>
       </ion-tab-button>
+
+      <ion-tab-button tab="radio">
+        <ion-icon src="assets/icon/radio.svg"></ion-icon>
+        <ion-label>Radio</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="liked">
+        <ion-icon src="assets/icon/like.svg"></ion-icon>
+        <ion-label>Liked</ion-label>
+      </ion-tab-button>
+
     </ion-tab-bar>
   </ion-tabs>
-
 </ion-content>
