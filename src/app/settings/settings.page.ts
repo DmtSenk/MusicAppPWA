@@ -1,20 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonSelectOption, IonSelect, IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonButtons, IonBackButton, IonButton} from '@ionic/angular/standalone';
+import { Storage } from '@ionic/storage-angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.page.html',
   styleUrls: ['./settings.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonButton, IonBackButton, IonButtons, IonSelectOption, IonSelect, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class SettingsPage implements OnInit {
 
-  constructor() { }
+  constructor(private storage:Storage, private router:Router) { }
+
+  Mood:string = "";
+  NumOfSongs:number = 5; 
+
+  async ionViewWillEnter(){
+    await this.storage.create();
+    this.Mood = await this.storage.get('Mood');
+    this.NumOfSongs = await this.storage.get("NumOfSongs");
+  }
+  
+  async onSaveClick(){
+    await this.storage.create();
+    await this.storage.set('Mood',this.Mood);
+    await this.storage.set("NumOfSongs",this.NumOfSongs);
+    this.router.navigate(['/home']);
+  }
 
   ngOnInit() {
   }
-
 }

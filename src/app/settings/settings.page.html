@@ -1,13 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>settings</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">settings</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-item>
+      <ion-select [(ngModel)]="Mood" label="Album genre" label-placement="floating">
+        <ion-select-option value="Instrumental">Instrumental</ion-select-option>
+        <ion-select-option value="Chill">Chill</ion-select-option>
+        <ion-select-option value="Focused">Focused</ion-select-option>
+        <ion-select-option value="Jazz">Jazz</ion-select-option>
+        <ion-select-option value="Pop">Pop</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-select [(ngModel)]="NumOfSongs" label="Songs to show" label-placement="floating">
+        <ion-select-option value="5">5</ion-select-option>
+        <ion-select-option value="10">10</ion-select-option>
+        <ion-select-option value="15">15</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div class="button-container">
+    <ion-button (click)="onSaveClick()" shape="round">SAVE</ion-button>
+  </div>
+
 </ion-content>

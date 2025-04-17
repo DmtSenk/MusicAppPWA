@@ -36,11 +36,6 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
 
-//stack order(to prevent issue with searchbar)
-ion-searchbar{
-    z-index: 100;
-}
-
 .circle-button {
     --border-radius: 50%;
     --padding-start: 0;
