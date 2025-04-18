@@ -14,4 +14,8 @@ export const routes: Routes = [
     path: 'settings',
     loadComponent: () => import('./settings/settings.page').then( m => m.SettingsPage)
   },
+  {
+    path: 'favorites',
+    loadComponent: () => import('./favorites/favorites.page').then( m => m.FavoritesPage)
+  },
 ];

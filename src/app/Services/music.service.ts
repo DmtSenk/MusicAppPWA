@@ -10,6 +10,7 @@ export class MusicService {
   constructor(private httpMusic: HttpClient) { } 
 
   getMoodSongs(Mood: string, NumOfSongs: number):Observable<any>{
+    // to get access to that api
     //https://cors-anywhere.herokuapp.com/corsdemo
     const url = `https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=${encodeURIComponent(Mood)}&limit=${NumOfSongs}`;
     return this.httpMusic.get(url);

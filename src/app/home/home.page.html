@@ -28,7 +28,7 @@
           Download
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item button [routerLink]="['/favorites']">
         <ion-label>
           Liked
         </ion-label>
@@ -39,7 +39,7 @@
 
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-menu-button slot="start"></ion-menu-button> <!-- Adds a menu button to open the side menu -->
+    <ion-menu-button slot="start"></ion-menu-button>
     <ion-title slot="start">
       Music App
     </ion-title>
@@ -64,7 +64,12 @@
       <img [src]="music.album.cover_small" />
       <ion-label>
         <h2>{{ music.title }}</h2>
-        <ion-button (click)="playMusic(music.preview)">{{ (songUrl == music.preview && isPlaying) ? "Pause": "Play"}}</ion-button>
+        <ion-button color="white" (click)="playMusic(music.preview)">
+          <ion-icon [src]="(songUrl == music.preview && isPlaying) ? 'assets/icon/pause.svg' : 'assets/icon/play.svg' "></ion-icon>
+        </ion-button>
+        <ion-button color="white" (click)="likeSong(music)">
+          <ion-icon [src]="isLiked(music) ? 'assets/icon/unlike.svg' : 'assets/icon/like.svg' "></ion-icon>
+        </ion-button>
       </ion-label>
     </ion-item>
   </ion-list>
