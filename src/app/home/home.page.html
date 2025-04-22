@@ -7,31 +7,21 @@
 
   <ion-content>
     <ion-list>
-      <ion-item button [routerLink]="['/home']">
-        <ion-label>
-          Home
-        </ion-label>
-      </ion-item>
       <ion-item button [routerLink]="['/settings']">
-        <ion-icon src="assets/icon/settings.svg"></ion-icon>
-        <ion-label>
-          Settings
-        </ion-label>
+        <ion-icon src="assets/icon/settings.svg" ></ion-icon>
+        <ion-label>Settings</ion-label>
       </ion-item>
       <ion-item>
-        <ion-label>
-          FM
-        </ion-label>
+        <ion-icon src="assets/icon/radio.svg"></ion-icon>
+        <ion-label>Radio</ion-label>
       </ion-item>
       <ion-item button (click)="openDownload()">
-        <ion-label>
-          Download
-        </ion-label>
+        <ion-icon src="assets/icon/download.svg"></ion-icon>
+        <ion-label>Download</ion-label>
       </ion-item>
       <ion-item button [routerLink]="['/favorites']">
-        <ion-label>
-          Liked
-        </ion-label>
+        <ion-icon src="assets/icon/favorites.svg"></ion-icon>
+        <ion-label>Favorites</ion-label>
       </ion-item>
     </ion-list>
   </ion-content>

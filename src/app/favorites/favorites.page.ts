@@ -23,6 +23,7 @@ export class FavoritesPage implements OnInit {
     await this.storage.create();
     this.likedSongs = await this.storage.get("LikedSongs");
   }
+
   playMusic(url: string){
     if(this.isPlaying && this.songUrl == url ){
       this.audio.pause();
@@ -37,6 +38,30 @@ export class FavoritesPage implements OnInit {
       }
       this.isPlaying = true;
     }
+  }
+  
+  likeSong(song: any){
+    let found = false;
+    for(let i = 0; i < this.likedSongs.length; i++){
+      if(this.likedSongs[i].id == song.id){
+      this.likedSongs.splice(i,1);
+      found = true;
+      break;
+      }
+    }
+    if(!found){
+      this.likedSongs.push(song);
+    }
+    this.storage.set("LikedSongs",this.likedSongs);
+  }
+
+  isLiked(song:any):boolean{
+    for(let i = 0; i<this.likedSongs.length;i++){
+      if(this.likedSongs[i].id == song.id){
+        return true;
+      }
+    }
+    return false;
   }
 
 }
