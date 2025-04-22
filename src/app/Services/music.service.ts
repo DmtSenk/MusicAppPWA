@@ -15,4 +15,9 @@ export class MusicService {
     const url = `https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=${encodeURIComponent(Mood)}&limit=${NumOfSongs}`;
     return this.httpMusic.get(url);
   }
+
+  searchSong(search: string, NumOfSongs: number):Observable<any>{
+    const url =`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=${encodeURIComponent(search)}&limit=${NumOfSongs}`;
+    return this.httpMusic.get(url);
+  }
 }

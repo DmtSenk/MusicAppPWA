@@ -38,11 +38,27 @@
 
 <ion-content id="main-content" [fullscreen]="true">
   <ion-item>
-    <ion-searchbar placeholder="Search for music..."></ion-searchbar>
-    <ion-button slot="end" class="circle-button" color="white">
+    <ion-searchbar [(ngModel)]="searchSong" placeholder="Search for music..."></ion-searchbar>
+    <ion-button slot="end" class="circle-button" color="white" (click)="searchMusic()">
       <ion-icon src="assets/icon/search.svg"></ion-icon>
     </ion-button>
   </ion-item>
+
+  <ion-list>
+    <ion-label>Search results: {{searchSong}}</ion-label>
+    <ion-item *ngFor="let music of searchResults">
+      <img [src]="music.album.cover_small" />
+      <ion-label>
+        <h2>{{ music.title }}</h2>
+        <ion-button color="white" (click)="playMusic(music.preview)">
+          <ion-icon [src]="(songUrl == music.preview && isPlaying) ? 'assets/icon/pause.svg' : 'assets/icon/play.svg' "></ion-icon>
+        </ion-button>
+        <ion-button color="white" (click)="likeSong(music)">
+          <ion-icon [src]="isLiked(music) ? 'assets/icon/unlike.svg' : 'assets/icon/like.svg' "></ion-icon>
+        </ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
   <ion-list>
     <ion-label>Recently Searched:</ion-label>

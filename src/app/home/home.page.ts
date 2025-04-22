@@ -5,12 +5,13 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 import { Browser } from '@capacitor/browser';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonMenuButton, IonMenu, RouterLink, IonList, IonItem, IonLabel, IonIcon, IonButton, CommonModule, IonHeader, IonToolbar, IonTitle, IonContent,IonSearchbar ],
+  imports: [IonMenuButton, IonMenu, RouterLink, IonList, IonItem, IonLabel, IonIcon, IonButton, CommonModule, IonHeader, IonToolbar, IonTitle, IonContent,IonSearchbar, FormsModule ],
 })
 export class HomePage implements OnInit{
 
@@ -23,6 +24,8 @@ export class HomePage implements OnInit{
   songUrl:string = "";
   audio: HTMLAudioElement = new Audio();
   likedSongs:any[] = [];
+  searchSong: string = "";
+  searchResults:any[]=[];
 
 
   async ionViewWillEnter(){
@@ -80,6 +83,13 @@ export class HomePage implements OnInit{
       }
     }
     return false;
+  }
+
+  async searchMusic(){
+    this.NumOfSongs = await this.storage.get('NumOfSongs');
+    this.musicService.searchSong(this.searchSong, this.NumOfSongs).subscribe((data)=>{
+      this.searchResults = data.data;
+    });
   }
 
   ngOnInit():void{
