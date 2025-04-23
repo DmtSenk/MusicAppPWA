@@ -11,7 +11,7 @@
         <ion-icon src="assets/icon/settings.svg" ></ion-icon>
         <ion-label>Settings</ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item button [routerLink]="['/radio']">
         <ion-icon src="assets/icon/radio.svg"></ion-icon>
         <ion-label>Radio</ion-label>
       </ion-item>
@@ -45,11 +45,10 @@
   </ion-item>
 
   <ion-list>
-    <ion-label>Search results: {{searchSong}}</ion-label>
     <ion-item *ngFor="let music of searchResults">
       <img [src]="music.album.cover_small" />
       <ion-label>
-        <h2>{{ music.title }}</h2>
+        <h2>{{ music.title }} ~ {{music.artist.name }}</h2>
         <ion-button color="white" (click)="playMusic(music.preview)">
           <ion-icon [src]="(songUrl == music.preview && isPlaying) ? 'assets/icon/pause.svg' : 'assets/icon/play.svg' "></ion-icon>
         </ion-button>
@@ -61,15 +60,11 @@
   </ion-list>
 
   <ion-list>
-    <ion-label>Recently Searched:</ion-label>
-  </ion-list>
-
-  <ion-list>
     <ion-label>Mood: {{ Mood }}</ion-label>
     <ion-item *ngFor="let music of Music">
       <img [src]="music.album.cover_small" />
       <ion-label>
-        <h2>{{ music.title }}</h2>
+        <h2>{{ music.title }} ~ {{music.artist.name }}</h2>
         <ion-button color="white" (click)="playMusic(music.preview)">
           <ion-icon [src]="(songUrl == music.preview && isPlaying) ? 'assets/icon/pause.svg' : 'assets/icon/play.svg' "></ion-icon>
         </ion-button>

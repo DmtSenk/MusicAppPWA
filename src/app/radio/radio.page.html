@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Radio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item *ngFor="let station of currentStations">
+    <img [src]="station.favicon" class="stationIcon"/>
+    <ion-label>{{ station.name }}</ion-label>
+    <ion-button color="white" (click)="playMusic(station.url_resolved)">
+      <ion-icon [src]="(stationUrl == station.url_resolved && isPlaying) ? 'assets/icon/pause.svg' : 'assets/icon/play.svg' "></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <div class="pageControls">
+    <ion-button (click)="prevPage()">Prev Page</ion-button>
+    <ion-button (click)="nextPage()">Next Page</ion-button>
+  </div>
+  
+</ion-content>

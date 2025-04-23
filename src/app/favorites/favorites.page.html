@@ -12,8 +12,13 @@
     <ion-item *ngFor="let song of likedSongs">
       <img [src]="song.album.cover_small" />
       <ion-label>
-        <h2>{{ song.title }}</h2>
-        <ion-button (click)="playMusic(song.preview)">{{ (songUrl == song.preview && isPlaying) ? "Pause": "Play"}}</ion-button>
+        <h2>{{ song.title }} ~ {{ song.artist.name}} </h2>
+        <ion-button color="white" (click)="playMusic(song.preview)">
+          <ion-icon [src]="(songUrl == song.preview && isPlaying) ? 'assets/icon/pause.svg' : 'assets/icon/play.svg' "></ion-icon>
+        </ion-button>
+        <ion-button color="white" (click)="likeSong(song)">
+          <ion-icon [src]="isLiked(song) ? 'assets/icon/unlike.svg' : 'assets/icon/like.svg' "></ion-icon>
+        </ion-button>
       </ion-label>
     </ion-item>
   </ion-list>

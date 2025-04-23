@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonLabel, IonButton, IonButtons, IonBackButton } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonLabel, IonButton, IonButtons, IonBackButton, IonIcon } from '@ionic/angular/standalone';
 import { Storage } from '@ionic/storage-angular';
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.page.html',
   styleUrls: ['./favorites.page.scss'],
   standalone: true,
-  imports: [IonBackButton, IonButtons, IonButton, IonLabel, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonIcon, IonBackButton, IonButtons, IonButton, IonLabel, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class FavoritesPage implements OnInit {
 
@@ -25,6 +25,8 @@ export class FavoritesPage implements OnInit {
   }
 
   playMusic(url: string){
+    console.log("Playing URL:", url);
+
     if(this.isPlaying && this.songUrl == url ){
       this.audio.pause();
       this.isPlaying = false;

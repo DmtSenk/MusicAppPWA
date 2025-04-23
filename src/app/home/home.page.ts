@@ -19,20 +19,20 @@ export class HomePage implements OnInit{
 
   Mood:string = "";
   NumOfSongs:number = 5; 
-  Music:any[]=[];
+  Music:any[] = [];
   isPlaying:boolean = false;
   songUrl:string = "";
-  audio: HTMLAudioElement = new Audio();
+  audio:HTMLAudioElement = new Audio();
   likedSongs:any[] = [];
   searchSong: string = "";
-  searchResults:any[]=[];
+  searchResults:any[] = [];
 
 
   async ionViewWillEnter(){
     await this.storage.create();
     this.Mood = await this.storage.get('Mood');
     this.NumOfSongs = await this.storage.get('NumOfSongs');
-    this.likedSongs = await this.storage.get("LikedSongs")
+    this.likedSongs = await this.storage.get("LikedSongs");
     if(this.Mood){
       this.musicService.getMoodSongs(this.Mood, this.NumOfSongs).subscribe((data)=>{
         this.Music = data.data;
@@ -76,7 +76,7 @@ export class HomePage implements OnInit{
     this.storage.set("LikedSongs",this.likedSongs);
   }
 
-  isLiked(song:any):boolean{
+  isLiked(song: any):boolean{
     for(let i = 0; i<this.likedSongs.length;i++){
       if(this.likedSongs[i].id == song.id){
         return true;
